@@ -1,5 +1,6 @@
 # https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot
 
+import sys
 from datetime import tzinfo
 from typing import (
     Any,
@@ -8,7 +9,6 @@ from typing import (
     ContextManager,
     Dict,
     List,
-    Literal,
     Mapping,
     Optional,
     Sequence,
@@ -62,6 +62,10 @@ from matplotlib.ticker import (  # undocumented
 from matplotlib.transforms import Bbox
 from matplotlib.widgets import Slider as Slider, SubplotTool  # undocumented
 from PIL.Image import Image
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
 
 from . import cbook as cbook, cm as cm, style as style  # undocumented
 

@@ -1,7 +1,12 @@
 # COMPLETE
 
-from typing import (BinaryIO, List, Literal, NamedTuple, Optional, Tuple,
+import sys
+from typing import (BinaryIO, List, NamedTuple, Optional, Tuple,
                     Union, overload)
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
 
 
 class CharMetrics(NamedTuple):
