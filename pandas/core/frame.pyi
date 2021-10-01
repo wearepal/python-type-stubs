@@ -55,22 +55,22 @@ class _iLocIndexerFrame(_iLocIndexer):
 
 class _LocIndexerFrame(_LocIndexer):
     @overload
+    def __getitem__(self, idx: Union[Union[IndexType, MaskType], List[StrLike], Tuple[Union[IndexType, MaskType, slice, List[StrLike]], Union[List[StrLike], slice, Series[bool]]]],) -> DataFrame: ...
+    @overload
     def __getitem__(self, idx: Tuple[StrLike, StrLike],) -> Scalar: ...   
     @overload
-    def __getitem__(self, idx: int,) -> Series[Dtype]: ...
+    def __getitem__(self, idx: Union[int, StrLike],) -> Series[Dtype]: ...
     @overload
     def __getitem__(self, idx: Tuple[int, Union[slice, StrLike]],) -> Series[Dtype]: ...    
     @overload
     def __getitem__(self, idx: Tuple[Union[IndexType, MaskType], StrLike],) -> Series[Dtype]: ...    
     @overload
-    def __getitem__(self, idx: Union[Union[IndexType, MaskType], Tuple[Union[IndexType, MaskType], Union[List[StrLike], slice]]],) -> DataFrame: ...
-    @overload
     def __getitem__(self, idx: Index) -> DataFrame: ...
 
     def __setitem__(
         self,
-        idx: Union[MaskType, StrLike, Tuple[Union[MaskType, List[str]], Union[MaskType, List[str]]],],
-        value: Union[float, _np.ndarray, Series[Dtype], DataFrame],
+        idx: Union[MaskType, StrLike, Tuple[Union[MaskType, Index, List[Scalar], Scalar], Union[MaskType, List[Scalar], Scalar]],],
+        value: Union[Scalar, _np.ndarray, Series[Dtype], DataFrame],
     ) -> None: ...
 
 
@@ -501,7 +501,7 @@ class DataFrame(NDFrame):
         self,
         by: Union[_str, Sequence[_str]],
         axis: AxisType = ...,
-        ascending: _bool = ...,
+        ascending: Union[_bool, Sequence[_bool]] = ...,
         kind: Union[_str, Literal["quicksort", "mergesort", "heapsort"]] = ...,
         na_position: Union[_str, Literal["first", "last"]] = ...,
         ignore_index: _bool = ...,
@@ -513,7 +513,7 @@ class DataFrame(NDFrame):
         self,
         by: Union[_str, Sequence[_str]],
         axis: AxisType = ...,
-        ascending: _bool = ...,
+        ascending: Union[_bool, Sequence[_bool]] = ...,
         kind: Union[_str, Literal["quicksort", "mergesort", "heapsort"]] = ...,
         na_position: Union[_str, Literal["first", "last"]] = ...,
         ignore_index: _bool = ...,
@@ -525,7 +525,7 @@ class DataFrame(NDFrame):
         self,
         by: Union[_str, Sequence[_str]],
         axis: AxisType = ...,
-        ascending: _bool = ...,
+        ascending: Union[_bool, Sequence[_bool]] = ...,
         *,
         kind: Union[_str, Literal["quicksort", "mergesort", "heapsort"]] = ...,
         na_position: Union[_str, Literal["first", "last"] ]= ...,
@@ -536,7 +536,7 @@ class DataFrame(NDFrame):
         self,
         by: Union[_str, Sequence[_str]],
         axis: AxisType = ...,
-        ascending: _bool = ...,
+        ascending: Union[_bool, Sequence[_bool]] = ...,
         inplace: Optional[_bool] = ...,
         kind: Union[_str, Literal["quicksort", "mergesort", "heapsort"]] = ...,
         na_position: Union[_str, Literal["first", "last"] ]= ...,
@@ -547,7 +547,7 @@ class DataFrame(NDFrame):
         self,
         axis: AxisType = ...,
         level: Optional[Level] = ...,
-        ascending: _bool = ...,
+        ascending: Union[_bool, Sequence[_bool]] = ...,
         kind: Union[_str, Literal["quicksort", "mergesort", "heapsort"]] = ...,
         na_position: Union[_str, Literal["first", "last"]] = ...,
         sort_remaining: _bool = ...,
@@ -560,7 +560,7 @@ class DataFrame(NDFrame):
         self,
         axis: AxisType = ...,
         level: Optional[Level] = ...,
-        ascending: _bool = ...,
+        ascending: Union[_bool, Sequence[_bool]] = ...,
         kind: Union[_str, Literal["quicksort", "mergesort", "heapsort"]] = ...,
         na_position: Union[_str, Literal["first", "last"]] = ...,
         sort_remaining: _bool = ...,
@@ -573,7 +573,7 @@ class DataFrame(NDFrame):
         self,
         axis: AxisType = ...,
         level: Optional[Level] = ...,
-        ascending: _bool = ...,
+        ascending: Union[_bool, Sequence[_bool]] = ...,
         *,
         kind: Union[_str, Literal["quicksort", "mergesort", "heapsort"]] = ...,
         na_position: Union[_str, Literal["first", "last"]] = ...,
@@ -585,7 +585,7 @@ class DataFrame(NDFrame):
         self,
         axis: AxisType = ...,
         level: Optional[Level] = ...,
-        ascending: _bool = ...,
+        ascending: Union[_bool, Sequence[_bool]] = ...,
         inplace: Optional[_bool] = ...,
         kind: Union[_str, Literal["quicksort", "mergesort", "heapsort"]] = ...,
         na_position: Union[_str, Literal["first", "last"]] = ...,

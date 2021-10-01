@@ -27,7 +27,7 @@ class _iLocIndexerSeries(_iLocIndexer, Generic[S1]):
     @overload
     def __getitem__(self, idx: int) -> S1: ...
     @overload
-    def __getitem__(self, idx: Index) -> Series[S1]: ...
+    def __getitem__(self, idx: Union[Index, slice]) -> Series[S1]: ...
     # set item
     @overload
     def __setitem__(self, idx: int, value: S1) -> None: ...
@@ -37,11 +37,11 @@ class _iLocIndexerSeries(_iLocIndexer, Generic[S1]):
 
 class _LocIndexerSeries(_LocIndexer, Generic[S1]):
     @overload
-    def __getitem__(self, idx: Union[MaskType, Sequence[str]],) -> Series[S1]: ...
+    def __getitem__(self, idx: Union[MaskType, Index, Sequence[str], slice],) -> Series[S1]: ...
     @overload
     def __getitem__(self, idx: Union[int, str],) -> S1: ...
     @overload
-    def __setitem__(self, idx: MaskType, value: Union[S1, np.ndarray, Series[S1]], ) -> None: ...
+    def __setitem__(self, idx: Union[Index, MaskType], value: Union[S1, np.ndarray, Series[S1]], ) -> None: ...
     @overload
     def __setitem__(self, idx: str, value: S1, ) -> None: ...
     @overload
@@ -53,7 +53,7 @@ class Series(IndexOpsMixin, NDFrame, Generic[S1]):
     _ListLike = Union[np.ndarray, Dict[_str, np.ndarray], Sequence, Index]
     def __init__(
         self,
-        data: Optional[Union[_ListLike, Series[S1], Dict[int, S1], Dict[_str, S1]]] = ...,
+        data: Optional[Union[object, _ListLike, Series[S1], Dict[int, S1], Dict[_str, S1]]] = ...,
         index: Union[_str, int, Series, List, Index] = ...,
         dtype = ...,
         name: Optional[Hashable] = ...,
@@ -323,7 +323,7 @@ class Series(IndexOpsMixin, NDFrame, Generic[S1]):
     @overload
     def fillna(
         self,
-        value: Union[S1, Dict, Series[S1], DataFrame],
+        value: Union[Scalar, Dict, Series[S1], DataFrame],
         method: Optional[Union[_str, Literal["backfill", "bfill", "pad", "ffill"]]] = ...,
         axis: SeriesAxisType = ...,
         limit: Optional[int] = ...,
@@ -334,7 +334,7 @@ class Series(IndexOpsMixin, NDFrame, Generic[S1]):
     @overload
     def fillna(
         self,
-        value: Union[S1, Dict, Series[S1], DataFrame],
+        value: Union[Scalar, Dict, Series[S1], DataFrame],
         method: Optional[Union[_str, Literal["backfill", "bfill", "pad", "ffill"]]] = ...,
         axis: SeriesAxisType = ...,
         *,
@@ -344,7 +344,7 @@ class Series(IndexOpsMixin, NDFrame, Generic[S1]):
     @overload
     def fillna(
         self,
-        value: Union[S1, Dict, Series[S1], DataFrame],
+        value: Union[Scalar, Dict, Series[S1], DataFrame],
         method: Optional[Union[_str, Literal["backfill", "bfill", "pad", "ffill"]]] = ...,
         axis: SeriesAxisType = ...,
         inplace: _bool = ...,
@@ -605,7 +605,7 @@ class Series(IndexOpsMixin, NDFrame, Generic[S1]):
     ) -> Series[S1]: ...
     def mask(
         self,
-        cond: Union[Series[S1], np.ndarray, Callable],
+        cond: MaskType,
         other: Union[Scalar, Series[S1], DataFrame, Callable] = ...,
         inplace: _bool = ...,
         axis: Optional[SeriesAxisType] = ...,
