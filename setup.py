@@ -29,7 +29,7 @@ setup(
     classifiers=[  # classifiers can be found here: https://pypi.org/classifiers/
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
-        "Typing :: Typed",
+        "Typing :: Stubs Only",
     ],
     zip_safe=False,
 )
