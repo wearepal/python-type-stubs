@@ -1,7 +1,7 @@
 from __future__ import annotations
 import sys
 from typing import Generic, overload, Union, Protocol, TypeVar
-from _typing import Timedelta, Timestamp
+from pandas._typing import Timedelta, Timestamp
 import datetime
 
 if sys.version_info >= (3, 8):
