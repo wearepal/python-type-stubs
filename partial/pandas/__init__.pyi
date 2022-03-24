@@ -111,6 +111,6 @@ from .io.api import (
 
 from .util._tester import test as test
 
-import pandas.testing as testing
+from . import _testing as testing
 
 __version__ : str
