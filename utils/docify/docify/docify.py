@@ -42,12 +42,12 @@ def docify(stubfile, class_, method, doc, verbose):
                     raise Exception(f'{stubfile}:{i} Method {method} not found in class {class_}')
 
             # We have found the first line of the method. The signature can
-            # span multiple lines, so we need to look for '...\n' to find the end
+            # span multiple lines, so we need to look for ': ...' to find the end
             j = i
             end = i
             while j < len(stublines):
                 line = stublines[j].rstrip()
-                if line.endswith(' ...'):
+                if line.endswith(': ...'):
                     end = j
                     break
                 j += 1
@@ -65,6 +65,21 @@ def docify(stubfile, class_, method, doc, verbose):
         stublines[end] = f'{line[:-4]}\n        """\n{doc}\n        """\n        pass\n'
     else:
         stublines[end] = f'{line[:-4]}\n    """\n{doc}\n    """\n    pass\n'
+
+    # Do a sanity check; the first non-comment non-docstring line after what we patched
+    # should be a function, class, or method definition, or if not, it should not be 
+    # a partial argument list (i.e. no commas or right parentheses).
+    i = end + 1
+    while i < len(stublines):
+        line = stublines[i].strip()
+        if len(line) and line[0] != '#' and line[0] != '@':
+            if line.startswith('class ') or line.startswith('def '):
+                break
+            if line.find(',') >= 0 or line.find(')') >= 0 or line.find('"""') >= 0:
+                raise Exception(f'Docstring inserted at {stubfile}:{end} is malformed; next line was {line}')
+            else:
+                break
+        i += 1 
 
     with open(stubfile, 'w') as f:
         f.writelines(stublines)
