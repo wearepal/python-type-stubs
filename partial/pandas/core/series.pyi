@@ -210,7 +210,6 @@ class Series(IndexOpsMixin, NDFrame, Generic[S1]):
     @overload
     def reset_index(
         self,
-        /,
         drop: Literal[True],
         level: Optional[Sequence[Level]] = ...,
         name: Optional[object] = ...,
@@ -219,7 +218,6 @@ class Series(IndexOpsMixin, NDFrame, Generic[S1]):
     @overload
     def reset_index(
         self,
-        /,
         drop: Literal[True],
         level: Optional[Level] = ...,
         name: Optional[object] = ...,
