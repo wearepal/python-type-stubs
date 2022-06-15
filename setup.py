@@ -13,15 +13,12 @@ setup(
     license="MIT License",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    package_dir={  # this tells distutils that pandas-stubs is in pandas
-        "matplotlib-stubs": "matplotlib",
-        "cv2-stubs": "cv2",
-        "pandas-stubs": "partial/pandas",
+    package_dir={  # this tells distutils that matplotlib-stubs is in matplotlib
+        "matplotlib-stubs": "matplotlib", "cv2-stubs": "cv2"
     },
     package_data={
         "matplotlib-stubs": ["*.pyi", "**/*.pyi", "**/**/*.pyi", "**/**/**/*.pyi"],
         "cv2-stubs": ["*.pyi", "**/*.pyi", "**/**/*.pyi", "**/**/**/*.pyi"],
-        "pandas-stubs": ["*.pyi", "**/*.pyi", "**/**/*.pyi", "**/**/**/*.pyi"],
         "scipy-stubs": ["*.pyi", "**/*.pyi", "**/**/*.pyi", "**/**/**/*.pyi"],
         "seaborn-stubs": ["*.pyi", "**/*.pyi", "**/**/*.pyi", "**/**/**/*.pyi"],
         "sklearn-stubs": ["*.pyi", "**/*.pyi", "**/**/*.pyi", "**/**/**/*.pyi"],
@@ -29,7 +26,6 @@ setup(
     packages=[
         "matplotlib-stubs",
         "cv2-stubs",
-        "pandas-stubs",
         "scipy-stubs",
         "seaborn-stubs",
         "sklearn-stubs",
