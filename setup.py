@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="python-type-stubs",
-    version="0.1.2.dev0",
+    version="0.1.3.dev0",
     url="https://github.com/wearepal/python-type-stubs",
     author="microsoft",
     description="A set of type stubs for popular Python packages.",
@@ -30,7 +30,7 @@ setup(
         "seaborn-stubs",
         "sklearn-stubs",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     extras_require={},
     classifiers=[  # classifiers can be found here: https://pypi.org/classifiers/
         "Programming Language :: Python :: 3",
