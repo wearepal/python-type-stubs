@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="python-type-stubs",
-    version="0.1.3.dev0",
+    version="0.1.4.dev0",
     url="https://github.com/wearepal/python-type-stubs",
     author="microsoft",
     description="A set of type stubs for popular Python packages.",
@@ -14,7 +14,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     package_dir={  # this tells distutils that matplotlib-stubs is in matplotlib
-        "matplotlib-stubs": "matplotlib", "cv2-stubs": "cv2"
+        "matplotlib-stubs": "matplotlib", "cv2-stubs": "cv2", "sklearn-stubs": "sklearn",
     },
     package_data={
         "matplotlib-stubs": ["*.pyi", "**/*.pyi", "**/**/*.pyi", "**/**/**/*.pyi"],
