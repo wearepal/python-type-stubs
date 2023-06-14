@@ -86,3 +86,40 @@ strict_equality = true
 show_error_context = false
 show_column_numbers = false
 show_error_codes = true
+
+
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-type-stubs"
+version = "0.1.5.dev0"
+authors = [{name = "microsoft"}]
+license = {text = "MIT License"}
+description = "A set of type stubs for popular Python packages."
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Typing :: Stubs Only",
+]
+requires-python = ">=3.8"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[tool.setuptools]
+packages = [
+    "matplotlib-stubs",
+    "cv2-stubs",
+    "scipy-stubs",
+    "sklearn-stubs",
+]
+include-package-data = true
+
+[tool.setuptools.package-dir]
+matplotlib-stubs = "stubs/matplotlib"
+cv2-stubs = "stubs/cv2-stubs"
+scipy-stubs = "stubs/scipy-stubs"
+sklearn-stubs = "stubs/sklearn"

@@ -4,7 +4,7 @@
 
 As the Python team, we are helping to ensure that packages have high-quality type annotations.
 In cases where this must be done through type stubs, we are contributing stubs to
-[typeshed](https://github.com/python/typeshed). This repository contains our “work in progress”.
+[typeshed](https://github.com/python/typeshed). This repository contains our "work in progress".
 Once the stubs for a package meet the requirements of typeshed, we will contribute them to
 typeshed and delete them from this repository. We also support partial stubs in our tooling
 in which case the stubs may never graduate from here, but we want to share them publicly so
