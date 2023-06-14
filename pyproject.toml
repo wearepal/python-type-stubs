@@ -123,3 +123,6 @@ matplotlib-stubs = "stubs/matplotlib"
 cv2-stubs = "stubs/cv2-stubs"
 scipy-stubs = "stubs/scipy-stubs"
 sklearn-stubs = "stubs/sklearn"
+
+[tool.setuptools.package-data]
+"*" = ["*.pyi", "**/*.pyi", "**/**/*.pyi", "**/**/**/*.pyi"]
