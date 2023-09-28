@@ -94,7 +94,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-type-stubs"
-version = "0.1.5.dev0"
+version = "0.1.6.dev0"
 authors = [{name = "microsoft"}]
 license = {text = "MIT License"}
 description = "A set of type stubs for popular Python packages."
@@ -111,16 +111,12 @@ content-type = "text/markdown"
 
 [tool.setuptools]
 packages = [
-    "matplotlib-stubs",
-    "cv2-stubs",
     "scipy-stubs",
     "sklearn-stubs",
 ]
 include-package-data = true
 
 [tool.setuptools.package-dir]
-matplotlib-stubs = "stubs/matplotlib"
-cv2-stubs = "stubs/cv2-stubs"
 scipy-stubs = "stubs/scipy-stubs"
 sklearn-stubs = "stubs/sklearn"
 
